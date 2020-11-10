@@ -22,6 +22,7 @@ public class MovieController {
 	@Autowired
 	private MovieRepo movieRepo;
 
+	// Get ALL movies
 	@GetMapping("/")
 	public List<Movie> getAll() {
 		return movieRepo.findAll();

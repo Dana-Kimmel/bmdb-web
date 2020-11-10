@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.bmdb.business.Actor;
-import com.bmdb.business.Movie;
+
 import com.bmdb.db.ActorRepo;
-import com.bmdb.db.MovieRepo;
+
 
 @CrossOrigin
 @RestController
