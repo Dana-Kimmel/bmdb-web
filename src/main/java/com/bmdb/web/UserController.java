@@ -6,14 +6,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.bmdb.business.Movie;
 
-import com.bmdb.db.MovieRepo;
+import com.bmdb.business.User;
+
+import com.bmdb.db.UserRepo;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/movies")
-public class MovieController {
+@RequestMapping("/users")
+public class UserController {
 
 	/*
 	 * A controller will implement 5 CRUD methods: 1) GET ALL 2) GET BY ID 3) POST -
@@ -21,42 +22,42 @@ public class MovieController {
 	 */
 
 	@Autowired
-	private MovieRepo movieRepo;
+	private UserRepo userRepo;
 
 	// Get ALL movies
 	@GetMapping("/")
-	public List<Movie> getAll() {
-		return movieRepo.findAll();
+	public List<User> getAll() {
+		return userRepo.findAll();
 	}
 
 	// Get a movie by id
 	@GetMapping("/{id}")
-	public Optional<Movie> getById(@PathVariable int id) {
-		return movieRepo.findById(id);
+	public Optional<User> getById(@PathVariable int id) {
+		return userRepo.findById(id);
 	}
 
 	// Add a movie
 	@PostMapping("/")
-	public Movie addMovie(@RequestBody Movie m) {
-		m = movieRepo.save(m);
+	public User addUser(@RequestBody User m) {
+		m = userRepo.save(m);
 		return m;
 	}
 
 	// Update a movie
 	@PutMapping("/")
-	public Movie updateMovie(@RequestBody Movie m) {
-		m = movieRepo.save(m);
+	public User updateUser(@RequestBody User m) {
+		m = userRepo.save(m);
 		return m;
 	}
 
 	// Delete a movie
 	@DeleteMapping("/{id}")
-	public Movie deleteMovie(@PathVariable int id) {
+	public User deleteUser(@PathVariable int id) {
 		// Optional type will wrap a movie
-		Optional<Movie> m = movieRepo.findById(id);
+		Optional<User> m = userRepo.findById(id);
 		// isPresent() will return true if a movie was found
 		if (m.isPresent()) {
-			movieRepo.deleteById(id);
+			userRepo.deleteById(id);
 		} else {
 			System.out.println("Error - movie not found for id " + id);
 		}
